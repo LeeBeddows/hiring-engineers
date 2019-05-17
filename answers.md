@@ -12,6 +12,21 @@ The technical exercise instructions recommend starting with a blank canvas - and
 I chose to fire up a new Vagrant VM on my development Macbook Pro - and use the bento box image to start an Ubuntu 16.04 OS - via the command:    
 > vagrant init bento/ubuntu-16.04
 
- SCREENSHOT 1 .       SCREENSHOT 2
+![Vagrant initiation](https://i.imgur.com/ORNli1f.png) 
+
+
+The next step is to sign up for a new DataDog account - https://www.datadoghq.com/ - specifying the "DataDog Recruiting Candidate" organisation - so I could start collecting the metrics needed for this exercise.
+
+Thankfully the agent installation is super simple - and when opening a new account - the first screens presented are those to guide you through the process for your specific situation and even provide the exact commands you need to run including the required API Key.
+
+![Agent installed on new vagrant box](https://i.imgur.com/7IwQxAa.png) 
  
+Here we have the Host Map screen - showing the details of my vagrant box - as well as some custom tags set within the datadog.yaml file - using the syntax:
+
+> tags:
+>    - <KEY_1>:<VALUE_1>
+>    - <KEY_2>:<VALUE_2>
+>    - <KEY_3>:<VALUE_3>
  
+![Agent installed on new vagrant box](https://i.imgur.com/ne1ISxO.png) 
+
