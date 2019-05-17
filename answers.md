@@ -36,6 +36,9 @@ tags:
     - role:mysql_database
 ```
 
+The ability to add custom tags and identify different elements being monitored in a way that is meaningful to you and your team / organisation - opens up a whole world of additional options over more traditional monitoring tools.
+
+It means you are the master of how your infrastructure is identified - rather than being dictated to from a small set of auto-assigned names.   This in turn means that when there is a problem - the returned information and alerts about it - can be sorted, filtered and grouped in ways that demonstrate much more context for those trying to understand the situation.
 
 ![Host map details](https://i.imgur.com/ne1ISxO.png) 
 
@@ -43,9 +46,11 @@ Next the exercise requests an installation of a database - in my case I chose My
 
 ![mySql installation](https://i.imgur.com/CXuV7hq.png) 
 
-Here once again - the DataDog site makes the installation of the MySQL integration very straightforward - providing detailed instructions and specific commands to be run in order to setup each potential option and metric.
+Once again - DataDog makes the installation of the MySQL integration very straightforward - providing detailed instructions and specific commands to be run in order to setup each potential option and metric.
 
 ![mySql installation](https://i.imgur.com/xEfMdBn.png) 
 
+After creating a new database (datadogdb) and a new user to be given access to ie (datadog) - one needs to set the required permissions on the main db - as well as on the performance_schema - in order to extract metrics from it and pull them into DataDog.
 
+![mySql installation](https://i.imgur.com/lhKVDBj.png)
 
