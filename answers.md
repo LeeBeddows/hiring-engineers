@@ -19,14 +19,21 @@ The next step is to sign up for a new DataDog account - https://www.datadoghq.co
 
 Thankfully the agent installation is super simple - and when opening a new account - the first screens presented are those to guide you through the process for your specific situation and even provide the exact commands you need to run including the required API Key.
 
-![Agent installed on new vagrant box](https://i.imgur.com/7IwQxAa.png) 
+![Agent install screens](https://i.imgur.com/7IwQxAa.png) 
+
+Collecting Metrics
+-------------------------------------
  
-Here we have the Host Map screen - showing the details of my vagrant box - as well as some custom tags set within the datadog.yaml file - using the syntax:
+Here we have the Host Map screen within my new DataDog account - showing the details of my vagrant box - as well as some custom tags set within the datadog.yaml file - using the syntax:
 
 > tags:
 >    - <KEY_1>:<VALUE_1>
 >    - <KEY_2>:<VALUE_2>
 >    - <KEY_3>:<VALUE_3>
  
-![Agent installed on new vagrant box](https://i.imgur.com/ne1ISxO.png) 
+![Host map details](https://i.imgur.com/ne1ISxO.png) 
+
+The exercise requests an installation of a database - in my case I chose MySql - and then the corresponding DataDog integration.
+
+![mySql installation](https://i.imgur.com/nB4ZqTd.png) 
 
