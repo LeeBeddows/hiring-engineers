@@ -245,7 +245,15 @@ Collecting APM Data
 
 Given the provided Flask app (or any Python/Ruby/Go app of your choice) instrument this using Datadog’s APM solution.
 
+The first step - was to enable the APM logging settings within the *datadog.yaml* file - found in */etc/datadog-agent*.  Thanks to the extensive comments in the file - finding the section related to APM was simple - and with some removed comments - should give:
 
+```
+# Trace Agent  Specific Settings
+#
+apm_config:
+# Whether or not the APM Agent should run
+  enable: true
+```
 
 
 
