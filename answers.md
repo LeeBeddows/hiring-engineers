@@ -120,12 +120,70 @@ Since DataDog provide a set of very helpful templates for API interaction if usi
 ![Postman setup](https://i.imgur.com/ec7wSiZ.png) 
 
 
+In order to create the required dashboard - I used the following JSON body:
+
+```
+{
+    "title": "Now Thats What I call a Dashboard",
+    "widgets": [
+        {
+            "definition": {
+                "type": "timeseries",
+                "requests": [
+                    {
+                     "q": "avg:my_metric{*}"
+                    }
+                ],
+                "title": "My Metric timeseries"
+            }
+        }
+         , 
+          {
+            "definition": {
+                "type": "timeseries",
+                "requests": [ 
+                	{
+                		"q": "anomalies(avg:mysql.performance.cpu_time{*}, 'basic', 2)"
+                	}
+                	],
+              "title": "My MySQL Anomaly Graph" 
+    		}
+          }
+    	,
+		{
+            "definition": {
+                "type": "timeseries",
+                "requests": [
+                    {
+                  "q": "my_metric{*}.rollup(sum,100)"
+                    }
+                ],
+                "title": "My Metric Rollup Function"
+            }
+		}
+    ],
+    "layout_type": "ordered",
+    "description": "Now Thats What I call a Dashboard - Vol 1 - this is a set of visualisations for some the key metrics related to my DataDog technical exericse.  This includes a timeseries for the randomly generated values of My Metric, an anomoly function laid over values from the MySQL installation I am using and rollup function applied to My Metric.",
+    "is_read_only": true,
+    "template_variables": [
+        {
+            "name": "host1",
+            "prefix": "host",
+            "default": "myhost"
+        }
+    ]
+}
+
+```
+
+Which gave a response as shown below:
+
+![Postman response to Dashboard create](https://i.imgur.com/SIY39Ze.png)
 
 
+Which in turn - created the below Dashboard within the DD portal:
 
-
-
-
+![My API created Dashboard](https://i.imgur.com/z8lCnOm.png)
 
 
 
