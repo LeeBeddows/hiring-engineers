@@ -109,4 +109,38 @@ It is possible to alter the value for min_collection_interval within the configu
 Visualising Data:
 -------------------------------------
 
+Utilize the Datadog API to create a Timeboard that contains:
 
+- Your custom metric scoped over your host.
+- Any metric from the Integration on your Database with the anomaly function applied.
+- Your custom metric with the rollup function applied to sum up all the points for the past hour into one bucket
+
+Since DataDog provide a set of very helpful templates for API interaction if using Postman - that is what I used here.  Adding the templates to a DataDog collection was as simple as downloading them, importing them to Postman and then adding the right variables for this current environment (DataDog API Key, App key and region). * *see my note re: these values in Notes/AOB at the end of this document*.
+
+![Postman setup](https://i.imgur.com/ec7wSiZ.png) 
+
+
+
+
+
+
+
+
+
+
+
+
+Notes / AOB
+-------------------------------------
+
+While working with the documentation around APIs - found here - https://docs.datadoghq.com/developers/guide/using-postman-with-datadog-apis/ - there is an instruction within the environment setup, which I found did not match with the downloaded Postman templates.
+The instruction advises:
+```
+In the table, add the variables datadog_api_key and datadog_application_key.
+```
+
+However - the available Postman templates actually expect: 
+```
+{{dd_api_key}} and {{dd_app_key}}
+```
+Once changed - all worked as required - but it would be useful for those starting out - to have the docs updated to match expected values. 
