@@ -185,6 +185,29 @@ Which in turn - created the below Dashboard within the DD portal:
 
 ![My API created Dashboard](https://i.imgur.com/z8lCnOm.png)
 
+Setting the timeframe for the past 5 minutes - and then taking a snapshot to send to myself - but it could easily have been a colleague / team member who I needed to look at a metric I had spotted:
+
+![My Dashboard over 5 mins](https://i.imgur.com/AkTgXnz.png)
+
+![My dashboard snapshot](https://i.imgur.com/NnKPwUg.png)
+
+#### Bonus Question: What is the Anomaly graph displaying
+
+![My MySQL Anomaly graph](https://i.imgur.com/DTx15M3.png)
+
+Anomaly detection is intended to highlight when a measured metric has reached a value which is outside of expectation - not just for a defined range - but also taking into consideration detectable repeating patterns in the data - such as daily, weekly and seasonal trends.
+
+This is incredibly useful for a support function that is trying to be alerted to issues that need attention - and don't want to be alerted to "expected" behaviour which happens on a schedule not usually catered for by traditonal monitoring tools and basic threshold alerting.
+
+For example - peaks in traffic associated with online video viewing - where the regular patterns of usage can see values 1000's of times higher in an evening than a daytime - but are still valid and ok.
+
+Here I have measured the cumulative CPU time elapsed for the MySQL processes running - and then asked DataDog to analyse the data and provide an "expected range" - then highlight values which are "anomalies" to that expectation.  In a real situation with a much larger body of historical data, the anomaly monitoring would be able to overlay a much more informed set of expected ranges.
+
+
+
+
+
+
 
 
 
