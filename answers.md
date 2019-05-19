@@ -271,7 +271,7 @@ After being allowed to build up some history - DataDog APM was able to begin pro
 
 These graph outputs can then be incorporated in Dashboards and Timeboards - alongside other metrics and information about the estate being monitored - as seen here:
 
-[Now Thats What I call a Dashboard](https://i.imgur.com/iDbv7jR.png)
+![Now Thats What I call a Dashboard](https://i.imgur.com/iDbv7jR.png)
 
 
 #### Bonus Question: What is the difference between a Service and a Resource?
