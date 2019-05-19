@@ -255,6 +255,32 @@ apm_config:
   enable: true
 ```
 
+Next up was installing PIP, Flask, Python (and other pre-requisites as needed) - plus reading up on the deeper usage of the Middelware and the DDTRace Python client - within the main DataDog docs as well as here -> pypi.datadoghq.com/trace/docs 
+
+Building on the back of the provided Flask app - and adding the required entries to use DataDog's APM tracing - gave a result like the one below (and included as a file in the submitted repo for this exercise):
+
+![new.py APM trace](https://i.imgur.com/gbTKJT0.png)
+
+Which - when run via command - *ddtrace-run python new.py* - began the application running on port 5050 ready to respond.
+
+In order to have some data to analyse in APM - it was necessary to target this app with some traffic - using a recurring trace request once a second.
+
+After being allowed to build up some history - DataDog APM was able to begin providing Application Performance Monitoring stats and recommended monitors - as shown below for latency and error count in particular:
+
+![new.py APM widgets](https://i.imgur.com/9QSuM14.png)
+
+These graph outputs can then be incorporated in Dashboards and Timeboards - alongside other metrics and information about the estate being monitored - as seen here:
+
+[Now Thats What I call a Dashboard](https://i.imgur.com/iDbv7jR.png)
+
+
+#### Bonus Question: What is the difference between a Service and a Resource?
+
+DataDog Docs confirms that, in the context of APM Tracing and Visualisation, there are four levels of granularity: services, resources, traces, and spans level.
+
+A service is a set of processes that do the same job. For instance, a simple web application may consist of two services - A single webapp service and a single database service.  APM automatically assigns names to services.
+
+Whereas - a resource is a particular action for a service - for example a canonical URL, such as /user/home or a handler function like web.user.home (often referred to as “routes” in MVC frameworks).  Resources should be grouped together under a canonical name - and again APM will automatically assign names to resources.
 
 
 
