@@ -50,7 +50,63 @@ Once again - DataDog makes the installation of the MySQL integration very straig
 
 ![mySql installation](https://i.imgur.com/xEfMdBn.png) 
 
-After creating a new database (datadogdb) and a new user to be given access to ie (datadog) - one needs to set the required permissions on the main db - as well as on the performance_schema - in order to extract metrics from it and pull them into DataDog.
+After creating a new database (datadogdb) and a new user to be given access to it (datadog) - one needs to set the required permissions on the main db - as well as on the performance_schema - in order to extract metrics from it and pull them into DataDog.
 
-![mySql installation](https://i.imgur.com/lhKVDBj.png)
+![mySql permissions](https://i.imgur.com/lhKVDBj.png)
+
+Once completed - these steps enable the included out of the box MySQL reports and dashboards within DataDog.  The huge advantage with these views and reports being included by DataDog - is the amount of time saved by not having to create your own.   Anyone who has run some of the other traditional monitoring tools will know the amount of time that used to need investing in even the basic views.  Thankfully the below required no manual time to produce or configure.
+
+![mySql overview](https://i.imgur.com/B6TQsms.png)
+
+#### Create a custom Agent check that submits a metric named my_metric with a random value between 0 and 1000
+
+Despite the extensive number of out of the box integrations - there may well be metrics that need to be collected from unique systems and require a custom check to be built.  This is catered for via Custom Agent Checks - https://docs.datadoghq.com/developers/write_agent_check/ - via the creation of a check file and a configuration file - which the DataDog agent can use together to gather the required data from the system.
+
+I created a check within /etc/datadog-agent/checks.d/ - called mycheck.py
+
+```
+from checks import AgentCheck
+from random import randint
+
+class my_metricCheck(AgentCheck):
+    def check(self, instance):
+        self.gauge('my_metric', randint(0, 1000))
+```
+
+and a corresponding configuration file in /etc/datadog-agent/conf.d/ - called (a matching) mycheck.yaml
+
+```
+init_config:
+
+instances:
+    [{}]
+```
+
+Which together - after restarting the datadog-agent service - began collecting a metric named my_metric with a random integer value - as shown below in the datadog metric explorer:
+
+![my_metric check](https://i.imgur.com/GoSPhYL.png)
+
+#### Change your check's collection interval so that it only submits the metric once every 45 seconds.
+
+With the configuration file empty - the check just created - is using the default min_collection_interval of 15 seconds.
+
+By altering the mycheck.yaml file and adding the following - we can change the collection interval to 45 seconds:
+
+```
+init_config:
+
+instances:
+    [{
+        min_collection_interval: 45
+     }]
+```
+
+
+#### Bonus Question Can you change the collection interval without modifying the Python check file you created?
+
+It is possible to alter the value for min_collection_interval within the configuration file of any check, whether created by DD or by yourself as a custom check - from within the *.yaml* as we did for the mycheck.yaml file above.  The benefit of always keeping configuration like this within a configuration file - rather than in the check file - is that when time comes to verify or change configuration values - they are all in one place rather than scattered amongst the check code itself.
+
+Visualising Data:
+-------------------------------------
+
 
