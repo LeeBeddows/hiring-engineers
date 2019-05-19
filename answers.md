@@ -178,7 +178,7 @@ In order to create the required dashboard - I used the following JSON body:
 
 Which gave a response as shown below:
 
-![Postman response to Dashboard create](https://i.imgur.com/SIY39Ze.png)
+![Postman response to Dashboard create](https://i.imgur.com/2XzxoZO.png)
 
 
 Which in turn - created the below Dashboard within the DD portal:
