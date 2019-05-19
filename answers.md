@@ -204,6 +204,46 @@ For example - peaks in traffic associated with online video viewing - where the 
 Here I have measured the cumulative CPU time elapsed for the MySQL processes running - and then asked DataDog to analyse the data and provide an "expected range" - then highlight values which are "anomalies" to that expectation.  In a real situation with a much larger body of historical data, the anomaly monitoring would be able to overlay a much more informed set of expected ranges.
 
 
+Monitoring Data
+-------------------------------------
+
+Create a new Metric Monitor that watches the average of your custom metric (my_metric) and will alert if it’s above the following values over the past 5 minutes:
+
+- Warning threshold of 500
+- Alerting threshold of 800
+- And also ensure that it will notify you if there is No Data for this query over the past 10m.
+
+Using the DataDog UI - and chosing to create a new Monitor from the menu on the left - I configured the required thresholds as shown below:
+
+![My Metric Monitor config](https://i.imgur.com/L7Ek84P.png)
+
+Which - when tested - produced the following email notification:
+
+![Monitor Alert Email](https://i.imgur.com/dl4JemH.png)
+
+The configuration requested included thresholds for Alerting, Warning and for a lack of data over the last 10mins - each of which has a different notification message written - and which DataDog will pick when triggered.
+
+#### Bonus Question: Since this monitor is going to alert pretty often, you don’t want to be alerted when you are out of the office. Set up two scheduled downtimes for this monitor:
+
+- One that silences it from 7pm to 9am daily on M-F
+
+![My_Metric Alerts silenced](https://i.imgur.com/pBrRca1.png)
+
+- And one that silences it all day on Sat-Sun.
+
+![My Metric Alerts silenced - weekends](https://i.imgur.com/levJUBE.png)
+
+- email notifications for both new schedules:
+
+![Weekday silencing](https://i.imgur.com/zLfgHfJ.png)
+
+![Weekend silencing](https://i.imgur.com/BH10bvY.png)
+
+
+Collecting APM Data
+-------------------------------------
+
+Given the provided Flask app (or any Python/Ruby/Go app of your choice) instrument this using Datadog’s APM solution.
 
 
 
