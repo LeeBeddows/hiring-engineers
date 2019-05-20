@@ -255,7 +255,7 @@ apm_config:
   enable: true
 ```
 
-Next up was installing PIP, Flask, Python (and other pre-requisites as needed) - plus reading up on the deeper usage of the Middelware and the DDTRace Python client - within the main DataDog docs as well as here -> pypi.datadoghq.com/trace/docs 
+Next up was installing PIP, Flask, Python (and other pre-requisites as needed) - plus reading up on the deeper usage of the Middleware and the DDTRace Python client - within the main DataDog docs as well as here -> pypi.datadoghq.com/trace/docs 
 
 Building on the back of the provided Flask app - and adding the required entries to use DataDog's APM tracing - gave a result like the one below (and included as a file in the submitted repo for this exercise):
 
