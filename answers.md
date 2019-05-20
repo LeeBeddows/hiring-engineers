@@ -273,6 +273,14 @@ These graph outputs can then be incorporated in Dashboards and Timeboards - alon
 
 ![Now Thats What I call a Dashboard](https://i.imgur.com/iDbv7jR.png)
 
+After some investigation - it became clear that the Timeboard that I had created above - was not publicly shareable.  Instead I had to creat a Screenboard in order to share - and in turn - I also had to summarise the APM queries and metrics - rather than simply adding single graphs.
+
+Public URL for Board with Infrastructure and APM information - can be found here - https://p.datadoghq.com/sb/8efr12g1plm39skj-21940aae301129828f1aff2e4a77e0f3
+
+Screenshot of my DataDog Exercise Screenboard
+
+![Public Shareable Screenboard](https://i.imgur.com/IqqsalF.png)
+
 
 #### Bonus Question: What is the difference between a Service and a Resource?
 
@@ -281,6 +289,12 @@ DataDog Docs confirms that, in the context of APM Tracing and Visualisation, the
 A service is a set of processes that do the same job. For instance, a simple web application may consist of two services - A single webapp service and a single database service.  APM automatically assigns names to services.
 
 Whereas - a resource is a particular action for a service - for example a canonical URL, such as /user/home or a handler function like web.user.home (often referred to as “routes” in MVC frameworks).  Resources should be grouped together under a canonical name - and again APM will automatically assign names to resources.
+
+
+Final Question
+-------------------------------------
+
+
 
 
 
