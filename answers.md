@@ -257,11 +257,46 @@ apm_config:
 
 Next up was installing PIP, Flask, Python (and other pre-requisites as needed) - plus reading up on the deeper usage of the Middleware and the DDTRace Python client - within the main DataDog docs as well as here -> pypi.datadoghq.com/trace/docs 
 
-Building on the back of the provided Flask app - and adding the required entries to use DataDog's APM tracing - gave a result like the one below (and included as a file in the submitted repo for this exercise):
+Building on the back of the provided Flask app - and adding the required entries to use DataDog's APM tracing - gave a result like the one below (and included as a file at the bottom of this section):
 
+```
+vagrant@vagrant:/home$ diff -urN original.py new.py
+--- original.py	2019-05-20 13:25:10.349203003 +0000
++++ new.py	2019-05-20 13:30:04.852381002 +0000
+@@ -1,7 +1,12 @@
++
+ from flask import Flask
+ import logging
+ import sys
+ 
++from ddtrace import tracer
++from ddtrace.contrib.flask import TraceMiddleware
++
++
+ # Have flask use stdout as the logger
+ main_logger = logging.getLogger()
+ main_logger.setLevel(logging.DEBUG)
+@@ -12,6 +17,10 @@
+ 
+ app = Flask(__name__)
+ 
++# Register the flask app with the ddtrace flask middleware and provide a name for the service within APM
++
++traced_app = TraceMiddleware(app, tracer, service="new-py-app", distributed_tracing=False)
++
+ @app.route('/')
+ def api_entry():
+     return 'Entrypoint to the Application'
+``` 
+ 
 ![new.py APM trace](https://i.imgur.com/gbTKJT0.png)
 
-Which - when run via command - *ddtrace-run python new.py* - began the application running on port 5050 ready to respond.
+Instrumented app *new.py* can be found here
+
+https://pastebin.com/FJuefiPg
+
+
+This new Flask app - when run via command - *ddtrace-run python new.py* - began the application running on port 5050 ready to respond.
 
 In order to have some data to analyse in APM - it was necessary to target this app with some traffic - using a recurring trace request once a second.
 
@@ -281,9 +316,6 @@ Screenshot of my DataDog Exercise Screenboard
 
 ![Public Shareable Screenboard](https://i.imgur.com/IqqsalF.png)
 
-Instrumented app *new.py* can be found here
-
-https://pastebin.com/FJuefiPg
 
 
 #### Bonus Question: What is the difference between a Service and a Resource?
