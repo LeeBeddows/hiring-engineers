@@ -82,7 +82,7 @@ instances:
     [{}]
 ```
 
-Which together - after restarting the datadog-agent service - began collecting a metric named my_metric with a random integer value - as shown below in the datadog metric explorer:
+These two files working together - after restarting the datadog-agent service - began collecting a metric named my_metric with a random integer value - as shown below in the datadog metric explorer:
 
 ![my_metric check](https://i.imgur.com/GoSPhYL.png)
 
@@ -273,7 +273,7 @@ These graph outputs can then be incorporated in Dashboards and Timeboards - alon
 
 ![Now Thats What I call a Dashboard](https://i.imgur.com/iDbv7jR.png)
 
-After some investigation - it became clear that the Timeboard that I had created above - was not publicly shareable.  Instead I had to creat a Screenboard in order to share - and in turn - I also had to summarise the APM queries and metrics - rather than simply adding single graphs.
+After some investigation - it became clear that the Timeboard that I had created above - was not publicly shareable.  Instead I had to create a Screenboard in order to share - and in turn - I also had to summarise the APM queries and metrics - rather than simply adding single graphs.
 
 Public URL for Board with Infrastructure and APM information - can be found here - https://p.datadoghq.com/sb/8efr12g1plm39skj-21940aae301129828f1aff2e4a77e0f3
 
@@ -293,8 +293,52 @@ Whereas - a resource is a particular action for a service - for example a canoni
 
 Final Question
 -------------------------------------
+Datadog has been used in a lot of creative ways in the past.  Is there anything creative you would use DataDog for?
+
+There are lots of different aspects of DataDog that could be put to use in weird and wonderful ways - but the one that jumps out at me immediately - is the ability to gather information from lots of remote sources, store it centrally and offer lots of different ways to view that information, on many different endpoints.
+
+I am the Chairman of a Village Hall Charity here in Yorkshire, UK - and one of our main responsibilities is the upkeep, maintenance and organisation around the Village Hall building itself.
+
+![Kilnwick Village Hall](https://i.imgur.com/pB646Wm.jpg)
+
+The building's main purpose is as a community hub - and can be rented for the day at a very subsidised rate to allow those who live in and around the village - to organise and host events.  We have weekly clubs and gatherings for the local youth club, the old-folks club, exercise classes, yoga classes and monthly pub gatherings.
+
+As there is no one permanently on site at the hall - there is always a worry that the variety of electrically powered items we have - can be left powered on and cause problems.  These include: 
+
+- heating system - which uses lightbulbs to indicate status (On / Off) - and pose a serious danger if left on unattended
+
+- storage areas - with lights than can easily be left on - and cost significant amounts for a non-profit charity
+
+- kitchen area - with boilers, cookers and appliances which can be left on and present a fire hazard
+
+![Inside Hall](https://i.imgur.com/p0lGCBw.jpg)
+![Heating](https://i.imgur.com/4pnzQTa.jpg) 
+![Inside kitchen](https://i.imgur.com/wVwvsAC.jpg)
+
+In addition - there is an emergency defibrillator (yellow box on wall in first picture) - which is powered from a socket inside the hall - and needs to be powered at all times in order to stay usable, should the emergency services require it.
+
+Those of us on the Village Hall committee are responsible for ensuring all of the above is maintained - however our availability differs greatly across the time of day and days of the week.  In addition - there are varied preferences for contact via lots of different mediums (text, email, whatsapp) - and so keeping track of who has been notified is an issue.
+
+Step up DataDog :)
+
+I think that the first step would be replacing the heating and general lightbulbs - with IoT connected ones - plus adding IoT connections to the plug sockets for the appliances and the defibrillator - with all of them reporting back into Home Assistant.
+
+Then - thanks to DataDog's pre-existing integration with Home Assistant - I would be able to begin reporting on the status of each appliance and lightbulb and heating component - with the DataDog portal.
+
+Being able to then configure alerts on the values detected - around configurable schedules - and know what alert had been sent when - would be hugely helpful to the committee.
+
+Once that was in place - and showing its value to the Village Hall - I think that the next step of a IoT connected smart electricty meter would become an obvious and useful addition.
 
 
+Final Summary
+-------------------------------------
+
+I hope that the above document proves as interesting to those reviewing it as it has been for me to create.  I have learned about a number of additional capabilities within DataDog that I wasn't aware of before - and which I will actively use in future - as they seem so useful for people with the regular struggles that Technology Operations teams tend to have.
+
+I wish to thank you for reading this far - and hope to have the opportunity to present to more of the Technical Account Management team in person - some time in the near future.
+
+Many Thanks
+Lee Beddows
 
 
 
